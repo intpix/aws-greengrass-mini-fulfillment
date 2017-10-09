@@ -9,7 +9,7 @@
 3. Install python 2.7.12, python-pip, python-dev and screen.
 
 ### Prepare each host for Greengrass
-1. Use the following commands to add a user named `ggc_user` and a group named `ggc_group`:
+1. Use the following commands to add a user named **ggc_user** and a group named **ggc_group**:
 ```
 sudo adduser --system ggc_user
 sudo addgroup --system ggc_group
@@ -21,8 +21,11 @@ sudo apt-get install rpi-update
 sudo rpi-update
 sudo reboot
 ```
+
 3. Use the following command to install sqlite3:
-```sudo apt-get install sqlite3```
+```
+sudo apt-get install sqlite3
+```
 
 4. Download and install [Greengrass Core Software ARMv7l distributable](https://us-west-2.console.aws.amazon.com/iotv2/home?region=us-west-2#/software/greengrass):
 ```
@@ -51,8 +54,8 @@ source ~/.profile
 ```
 
 3. Configre AWS CLI with admin credentials:
-    1. Create admin-level user in IAM console
-    2. Create and download access id and key
+    1. Create admin-level user in IAM console.
+    2. Create and download the Access Key ID and Secret Access Key.
     3. Configure AWS CLI:
     ```
     aws configure
@@ -66,6 +69,7 @@ source ~/.profile
     ```
 
 4. Clone this repo to a directory (e.g. `~/aws-greengrass-mini-fulfillment`).
+> **Note**: All subsequent instructions assume the developer's local copy of this repository is in `~/aws-greengrass-mini-fulfillment/` if you chose another directory, remember to take that into account throughout these instructions. 
 
 5. Download the [AWS IoT Root CA](https://www.symantec.com/content/en/us/enterprise/verisign/roots/VeriSign-Class%203-Public-Primary-Certification-Authority-G5.pem) and copy to:
 ```
@@ -74,9 +78,9 @@ source ~/.profile
 ~/aws-greengrass-mini-fulfillment/groups/master/certs
 ```
 
-6. In AWS IoT console, create three Greengrass Groups named `master-pi-ggc`, `sort_arm-pi-ggc`, and `inv_arm-pi-ggc`, using Easy Creation. Download and rename the Core certificates to:
+6. In AWS IoT console, create three Greengrass Groups named **master-pi-ggc**, **sort_arm-pi-ggc**, and **inv_arm-pi-ggc**, using Easy Creation. Download and rename the Core certificates to:
 
-    For the `master-pi-ggc` Core:
+    For the **master-pi-ggc** Core:
     ```
     ~/aws-greengrass-mini-fulfillment/groups/master/certs
         cloud.pem.crt
@@ -84,7 +88,7 @@ source ~/.profile
         cloud.public.pem.key
     ```
 
-    For the `sort_arm-pi-ggc` Core:
+    For the **sort_arm-pi-ggc** Core:
     ```
     ~/aws-greengrass-mini-fulfillment/groups/arm/sort_arm
         cloud.pem.crt
@@ -92,7 +96,7 @@ source ~/.profile
         cloud.public.pem.keY
     ```
 
-    For the `inv_arm-pi-ggc` Core:
+    For the **inv_arm-pi-ggc** Core:
     ```
     ~/aws-greengrass-mini-fulfillment/groups/arm/inv_arm
         cloud.pem.crt
@@ -102,7 +106,7 @@ source ~/.profile
 
 7. In AWS IoT console, under each Greengrass group, create Device things and certificates. Download and rename certificates to:
 
-    For the `master-pi-ggc` Group Devices (GGD_belt, GGD_bridge, GGD_heartbeat, GGD_web):
+    For the **master-pi-ggc** Group Devices (GGD_belt, GGD_bridge, GGD_heartbeat, GGD_web):
     ```
     ~/aws-greengrass-mini-fulfillment/groups/master/ggd/certs
         GGD_belt.certificate.pem.crt
@@ -119,7 +123,7 @@ source ~/.profile
         GGD_web.public.key
     ```
 
-    For the `sort_arm-pi-ggc` Group Devices (GGD_arm, GGD_heartbeat):
+    For the **sort_arm-pi-ggc** Group Devices (GGD_arm, GGD_heartbeat):
     ```
     ~/aws-greengrass-mini-fulfillment/groups/arm/sort_arm/ggd_certs
         GGD_arm.certificate.pem.crt
@@ -130,7 +134,7 @@ source ~/.profile
         GGD_heartbeat.public.key
     ```
 
-    For the `inv_arm-pi-ggc` Group Devices (GGD_arm, GGD_heartbeat):
+    For the **inv_arm-pi-ggc** Group Devices (GGD_arm, GGD_heartbeat):
     ```
     ~/aws-greengrass-mini-fulfillment/groups/arm/inv_arm/ggd_certs
         GGD_arm.certificate.pem.crt
