@@ -10,34 +10,33 @@
 
 ### Prepare each host for Greengrass
 1. Use the following commands to add a user named `ggc_user` and a group named `ggc_group`:
-
-`sudo adduser --system ggc_user && sudo addgroup --system ggc_group`
+```
+sudo adduser --system ggc_user
+sudo addgroup --system ggc_group
+```
 
 2. Use the following commands to update your Raspberry Pi kernel to 4.9:
-
-`sudo apt-get install rpi-update && sudo rpi-update && sudo reboot`
-
+```
+sudo apt-get install rpi-update
+sudo rpi-update
+sudo reboot
+```
 3. Use the following command to install sqlite3:
-
-`sudo apt-get install sqlite3`
+```sudo apt-get install sqlite3```
 
 4. Download and install [Greengrass Core Software ARMv7l distributable](https://us-west-2.console.aws.amazon.com/iotv2/home?region=us-west-2#/software/greengrass):
-
-`sudo tar -zxvf greengrass-linux-armv7l-1.0.0.tar.gz -C /`
+```sudo tar -zxvf greengrass-linux-armv7l-1.0.0.tar.gz -C /```
 
 5. Edit the configuration file or create one at /greengrass/configuration/config.json (see http://docs.aws.amazon.com/greengrass/latest/developerguide/gg-setup.html).
 
 6. Make the project directory:
-
-`mkdir ~/mini-fulfillment`
+```mkdir ~/mini-fulfillment```
     
 ## Development Machine
 1. Install python, python-dev and virtualenv prerequisites:
-
-`apt-get install python python-dev virtualenv`
+```apt-get install python python-dev virtualenv```
 
 2. Install AWS CLI and add it to Command Line Path (see http://docs.aws.amazon.com/cli/latest/userguide/installing.html):
-
 ```
 pip install awscli --upgrade --user
 ls -a ~
@@ -49,11 +48,8 @@ source ~/.profile
     1. Create admin-level user in IAM console
     2. Create and download access id and key
     3. Configure AWS CLI:
-
-    `aws configure`
-
+    ```aws configure```
     and respond to the prompts:
-
 	```
     AWS Access Key ID [None]: [Access Key ID]
 	AWS Secret Access Key [None]: [Secret Access Key]
@@ -62,12 +58,14 @@ source ~/.profile
     ```
 
 4. Clone this repo to a directory (e.g. `~/aws-greengrass-mini-fulfillment`).
+
 5. Download the [AWS IoT Root CA](https://www.symantec.com/content/en/us/enterprise/verisign/roots/VeriSign-Class%203-Public-Primary-Certification-Authority-G5.pem) and copy to:
 ```
-	~/aws-greengrass-mini-fulfillment/groups/arm/sort_arm
-	~/aws-greengrass-mini-fulfillment/groups/arm/inv_arm
-	~/aws-greengrass-mini-fulfillment/groups/master/certs
+~/aws-greengrass-mini-fulfillment/groups/arm/sort_arm
+~/aws-greengrass-mini-fulfillment/groups/arm/inv_arm
+~/aws-greengrass-mini-fulfillment/groups/master/certs
 ```
+
 6. In AWS IoT console, create three Greengrass Groups named `master-pi-ggc`, `sort_arm-pi-ggc`, and `inv_arm-pi-ggc`, using Easy Creation. Download and rename the Core certificates to:
     For the `master-pi-ggc` Core:
     ```
